@@ -1,36 +1,31 @@
 <?php
+global $db;
+	define("DB_HOST", "localhost");
+    define("DB_USER", "root");
+    define("DB_PASSWORD", "");
+    define("DB_DATABASE", "MySQL");
 
-$txt = "Hello world!";
-$x = 5;
-$y = 10.5;
-
-echo $txt;
-echo "<br>";
-
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "VCU_BASKETBALL";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-
-
-// Create database
-$sql = "CREATE DATABASE myDB";
-if (mysqli_query($conn, $sql)) {
-    echo "Database created successfully";
-} else {
-    echo "Error creating database: " . mysqli_error($conn);
-}
-
-}
-
-$conn->close();
+    $db = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 ?>
+<select name = "players">
+<?php
+$sql = "SELECT * FROM players;";
+		$result = mysqli_query($db, $sql);
+		$resultCheck = mysqli_num_rows($result);
+		if($resultCheck>0) {
+			while($row = mysqli_fetch_assoc($result)) {
+			$player_names = $row[full_name];
+			echo "player names are: ";
+			echo "<option value = '$player_names'> $player_names</option>";
+}
+}
+?>
+</select>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+</body>
+</html>
