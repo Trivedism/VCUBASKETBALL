@@ -211,3 +211,11 @@ VALUES('10/26/2019','Richmond,VA','Virginia St.',38,19,52,34,90,53,'VCU',7637,46
 ('02/29/2020','Richmond,VA','George Washington',32,28,43,23,75,51,'VCU',7637,56,39,50,28,30,27,17,9),
 ('03/03/2020','Richmond,VA','Duquesne',30,26,40,44,77,80,'Duquesne',7637,51,47,30,34,29,40,15,14),
 ('03/06/2020','Davidson,NC','Davidson',35,33,30,42,65,75,'Davidson',NULL,47,49,43,44,25,29,11,16);
+                   
+DELIMITER //
+CREATE PROCEDURE getNameByHeight(IN p_name varchar(255), OUT p_height varchar(255))
+BEGIN
+DECLARE v_height varchar(255);
+SELECT height INTO p_height FROM players WHERE full_name = p_name;
+END //
+DELIMITER ;
