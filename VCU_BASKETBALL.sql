@@ -156,6 +156,13 @@ Winning_team varchar(255),
 Attendance int(10)
  
 );
+DELIMITER //
+CREATE PROCEDURE getNameByHeight(IN p_name varchar(255), OUT p_height varchar(255))
+BEGIN
+DECLARE v_height varchar(255);
+SELECT height INTO p_height FROM players WHERE full_name = p_name;
+END //
+DELIMITER ;
 DROP TABLE IF EXISTS BasketballGames;
 CREATE TABLE BasketballGames
 (
