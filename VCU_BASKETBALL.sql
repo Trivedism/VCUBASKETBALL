@@ -77,7 +77,8 @@ VALUES(101,'VCU'),
 DROP TABLE IF EXISTS Players;
 CREATE TABLE Players(
 jersey_number varchar(255) PRIMARY KEY NOT NULL,
-full_name varchar(255),
+first_name varchar(255),
+last_name varchar(255),
 position varchar(225),
 height varchar(255),
 weight int(3),
@@ -85,20 +86,20 @@ class varchar(255),
 birthplace varchar(255));
  
 INSERT INTO Players
-VALUES(12,'Jimmy Clark III', 'Guard', '6 3"',175,'Freshman', 'Covington, GA'),
-(13,'Malik Crowfield', 'Guard', '6 4"',190,'Senior', 'Laplace, LA'),
-(11,'KeShawn Curry', 'Guard', '6 4"',185,'Sophomore', 'Jacksonville, FL'),
-(4,'Corey Douglas', 'Forward', '6 8"',220,'Junior', 'Louisville, KY'),
-(2,'Marcus Exans', 'Guard', '6 3"',175,'Freshman', 'Covington, GA'),
-(15,'Arnold Henderson VI', 'Guard', '5 10"',175,'Freshman', 'Mechanicsville, VA'),
-(5,'Nah’Shon Hyland', 'Guard', '6 3"',165,'Freshman', 'Wilmington, DE'),
-(0,'De’Riante Jenkins', 'Guard', '6 5"',190,'Senior', 'Eutawville, SC'),
-(21,'Jarren McAllister', 'Guard', '6 4"',200,'Freshman', 'Wake Forest, NC'),
-(14,'Marcus Santos-Silva', 'Forward', '6 7"',250,'Junior', 'Taunton, MA'),
-(1,'Mike’L Simms', 'Guard', '6 5"',210,'Senior', 'Richmond, VA'),
-(23,'Issac Vann', 'Forward', '6 6"',200,'Senior', 'Bridgeport, CT'),
-(20,'Hason Ward', 'Forward', '6 9"',200,'Freshman', 'Bridgetown, Barbados'),
-(10,'Vince Williams', 'Guard', '6 6"',210,'Sophomore', 'Toledo, OH');
+VALUES(12,'Jimmy', 'Clark III', 'Guard', '6 3"',175,'Freshman', 'Covington, GA'),
+(13,'Malik', 'Crowfield', 'Guard', '6 4"',190,'Senior', 'Laplace, LA'),
+(11,'KeShawn', 'Curry', 'Guard', '6 4"',185,'Sophomore', 'Jacksonville, FL'),
+(4,'Corey', 'Douglas', 'Forward', '6 8"',220,'Junior', 'Louisville, KY'),
+(2,'Marcus', 'Exans', 'Guard', '6 3"',175,'Freshman', 'Covington, GA'),
+(15,'Arnold', 'Henderson VI', 'Guard', '5 10"',175,'Freshman', 'Mechanicsville, VA'),
+(5,'Nah’Shon', 'Hyland', 'Guard', '6 3"',165,'Freshman', 'Wilmington, DE'),
+(0,'De’Riante', 'Jenkins', 'Guard', '6 5"',190,'Senior', 'Eutawville, SC'),
+(21,'Jarren', 'McAllister', 'Guard', '6 4"',200,'Freshman', 'Wake Forest, NC'),
+(14,'Marcus', 'Santos-Silva', 'Forward', '6 7"',250,'Junior', 'Taunton, MA'),
+(1,'Mike’L', 'Simms', 'Guard', '6 5"',210,'Senior', 'Richmond, VA'),
+(23,'Issac', 'Vann', 'Forward', '6 6"',200,'Senior', 'Bridgeport, CT'),
+(20,'Hason', 'Ward', 'Forward', '6 9"',200,'Freshman', 'Bridgetown, Barbados'),
+(10,'Vince', 'Williams', 'Guard', '6 6"',210,'Sophomore', 'Toledo, OH');
  
  
  
@@ -211,11 +212,3 @@ VALUES('10/26/2019','Richmond,VA','Virginia St.',38,19,52,34,90,53,'VCU',7637,46
 ('02/29/2020','Richmond,VA','George Washington',32,28,43,23,75,51,'VCU',7637,56,39,50,28,30,27,17,9),
 ('03/03/2020','Richmond,VA','Duquesne',30,26,40,44,77,80,'Duquesne',7637,51,47,30,34,29,40,15,14),
 ('03/06/2020','Davidson,NC','Davidson',35,33,30,42,65,75,'Davidson',NULL,47,49,43,44,25,29,11,16);
-                   
-DELIMITER //
-CREATE PROCEDURE getNameByHeight(IN p_name varchar(255), OUT p_height varchar(255))
-BEGIN
-DECLARE v_height varchar(255);
-SELECT height INTO p_height FROM players WHERE full_name = p_name;
-END //
-DELIMITER ;
