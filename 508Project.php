@@ -1,11 +1,5 @@
 <?php
-global $db;
-	define("DB_HOST", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASSWORD", "");
-    define("DB_DATABASE", "MySQL");
-
-    $db = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
+	require_once('connection.php');
     echo "Here are your player Options, Select one ";
 ?>
 <select name = "players">
